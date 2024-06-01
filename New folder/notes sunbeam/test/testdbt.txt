@@ -1,0 +1,700 @@
+having clause works with group function but where is nt 
+where works on rows data,filter rows but having works on only aggregate !
+
+ 1  select c.cno "course no",cname,count(sname)
+  2    from course c , student s
+  3    where c.cno=s.cno and c.cno <=3
+  4   group by c.cno,cname
+  5* having count(sname)>1
+ed
+
+DBT_MockTest1
+Email address *
+1000sonali@gmail.com
+ 
+Examine the description of the EMPLOYEES table: EMP_ID NUMBER(4) NOT NULL LAST_NAME VARCHAR2(30) NOT NULL FIRST_NAME VARCHAR2(30) DEPT_ID NUMBER(2) JOB_CAT VARCHAR(30) SALARY NUMBER(8,2) Which statement shows the department ID, minimum salary, and maximum salary paid in that department, only if the minimum salary is less than 5000 and maximum salary is more than 15000? *
+SELECT dept_id, MIN (salary), MAX (salary) FROM employees WHERE MIN(salary) < 5000 AND MAX (salary) > 15000;
+SELECT dept_id, MIN (salary), MAX (salary) FROM employees WHERE MIN (salary) < 5000 AND MAX (salary) 15000 GROUP BY dept_id;
+SELECT dept_id, MIN(salary), MAX(salary) FROM employees HAVING MIN (salary) < 5000 AND MAX (salary)
+SELECT dept_id MIN (salary), MAX (salary) FROM employees GROUP BY dept_id HAVING MIN(salary) < 5000 AND MAX (salary) > 15000
+ 
+ 
+To grant a system privilege with the GRANT statement, you must (Choose all that apply)? *
+have been granted the system privilege with the ADMIN OPTION AND have been granted the GRANT ANY PRIVILEGE system privilege
+have been granted the GRANT ROLE PRIVILEGE system privilege
+have been granted the system privilege with the GRANT OPTION
+All of above
+ 
+ 
+What is true about joining tables through an equijoin? *
+You can join a maximum of two tables through an equijoin.
+You can join a maximum of two columns through an equijoin.
+You specify an equijoin condition in the SELECT or FROM clauses of a SELECT statement.
+You can join n tables (all having single column primary keys) in a SQL statement by specifying a minimum of n-1 join conditions.
+ 
+ 
+To write a query that performs an outer join of tables A and B and returns all rows from B, you need to write *
+any outer join
+Cross Join
+left outer join
+ 
+right outer join
+ 
+Which of the following has been achieved by the following SQL codes? SELECT employee_id FROM employees WHERE commission_pct = .5 OR salary > 23000; *
+it returns employees who have a 50% of a salary greater than $23,000;
+it returns employees who have a 50% commission rate or a salary greater than $23,000;
+ 
+runtime error
+it returns employees who have a 50% of a salary less than $23,000;
+ 
+Which of the following is true if you use the alter tablespace statement and specify the TEMPORARY clause (Choose all that apply)? *
+Oracle performs a checkpoint for all online datafiles in the tablespace
+Oracle does not ensure that all files are written
+The offline files may require media recovery before you bring the tablespace online
+All of above
+ 
+ 
+Which two statements about subqueries are true? *
+A single row subquery can retrieve data from only one table.
+A SQL query statement cannot display data from table B that is referred to in its subquery, unless table B is included in the main query's FROM clause.
+option B and option D
+ 
+A single row subquery can retrieve data from more than one table.
+ 
+You need to modify the STUDENTS table to add a primary key on the STUDENT_ID column. The table is currently empty. Which statement accomplishes this task? *
+ALTER TABLE students ADD PRIMARY KEY student_id;
+ALTER TABLE students ADD CONSTRAINT stud_id_pk PRIMARY KEY (student_id);
+ALTER TABLE students ADD CONSTRAINT PRIMARY KEY (student_id);
+ALTER TABLE students MODIFY CONSTRAINT stud_id_pk PRIMARY KEY (student_id);
+ 
+ 
+Which SELECT statement should you use to extract the year from the system date and display it in the format "1998"? *
+SELECT TO_CHAR(SYSDATE,'yyyy') FROM dual;
+ 
+SELECT TO_DATE(SYSDATE,'yyyy') FROM dual;
+SELECT DECODE(SUBSTR(SYSDATE, 8), 'YYYY') FROM dual;
+SELECT DECODE(SUBSTR(SYSDATE, 8), 'year') FROM dual;
+ 
+Examine the structure of the EMP_DEPT_VU view: Column Name Type Remarks EMPLOYEE_ID NUMBER From the EMPLOYEES table EMP_NAME VARCHAR2(30) From the EMPLOYEES table JOB_ID VARCHAR2(20) From the EMPLOYEES table SALARY NUMBER From the EMPLOYEES table DEPARTMENT_ID NUMBER From the DEPARTMENTS table DEPT_NAME VARCHAR2(30) From the DEPARTMENTS table Which SQL statement produces an error? *
+None of the statements produce an error; all are valid.
+SELECT * FROM emp_dept_vu;
+SELECT department_id, SUM(salary) FROM emp_dept_vu GROUP BY department_id;
+ 
+SELECT job_id, SUM(salary) FROM emp_dept_vu WHERE department_id IN (10,20) GROUP BY job_id HAVING SUM(salary) > 20000;
+ 
+Which of the following are the conditions that must b met before you can use RENAME DATAFILE with the alter tablepace command (Choose all that apply)? *
+the database must be taken offline before renaming
+ 
+the database must be open
+when only a single datafile is to be renamed
+option 1 and 2
+ 
+Examine the description of the STUDENTS table: STD_ID NUMBER(4) COURSE_ID VARCHARD2(10) START_DATE DATE END_DATE DATE Which two aggregate functions are valid on the START_DATE column? *
+COUNT(start_date)
+MIN(start_date)
+AVG(start_date)
+option A and option B
+ 
+ 
+Evaluate this SQL statement: SELECT ename, sal, 12*sal+100 FROM emp; The SAL column stores the monthly salary of the employee. Which change must be made to the above syntax to calculate the annual compensation as "monthly salary plus a monthly bonus of $100, multiplied by 12"? *
+No change is required to achieve the desired results.
+ 
+SELECT ename, sal, 12*(sal+100) FROM emp;
+SELECT ename, sal, (12*sal)+100 FROM emp;
+SELECT ename, sal+100,*12 FROM emp;
+ 
+The EMPLOYEES table contains these columns: EMPLOYEE_ID NUMBER(4) ENAME VARCHAR2 (25) JOB_ID VARCHAR2(10) Which SQL statement will return the ENAME, length of the ENAME, and the numeric position of the letter "a" in the ENAME column, for those employees whose ENAME ends with a the letter "n"? *
+SELECT ENAME, LENGTH(ENAME), INSTR(ENAME, 'a') FROM EMPLOYEES WHERE SUBSTR(ENAME, -1, 1) = 'n';
+ 
+SELECT ENAME, LENGTH(ENAME), INSTR(ENAME, ,-1,1) FROM EMPLOYEES WHERE SUBSTR(ENAME, -1, 1) = 'n';
+SELECT ENAME, LENGTH(ENAME), SUBSTR(ENAME, -1,1) FROM EMPLOYEES WHERE INSTR(ENAME, 1, 1) = 'n';
+SELECT ENAME, LENGTH(ENAME), SUBSTR(ENAME, -1,1) FROM EMPLOYEES WHERE INSTR(ENAME, -1, 1) = 'n';
+ 
+The STUDENT_GRADES table has these columns: STUDENT_ID NUMBER(12) SEMESTER_END DATE GPA NUMBER(4,3) Which statement finds students who have a grade point average (GPA) greater than 3.0 for the calendar year 2001? *
+SELECT student_id, gpa FROM student_grades WHERE semester_end BETWEEN '01-JAN-2001' AND '31-DEC-2001' OR gpa > 3.0;
+SELECT student_id, gpa FROM student_grades WHERE semester_end BETWEEN '01-JAN-2001' AND '31-DEC-2001' AND gpa gt 3.0;
+SELECT student_id, gpa FROM student_grades WHERE semester_end BETWEEN '01-JAN-2001' AND '31-DEC-2001' AND gpa > 3.0;
+ 
+SELECT student_id, gpa FROM student_grades WHERE semester_end BETWEEN '01-JAN-2001' AND '31-DEC-2001' AND gpa >= 3.0;
+ 
+Which of the following SQL statements can calculate and return the absolute value of -33? *
+SELECT ABS("-33") Absolute FROM DUAL;
+SELECT ABS('-33') "Absolute" FROM DUAL;
+SELECT ABS(-33), Absolute FROM DUAL;
+SELECT ABS(-33) "Absolute" FROM DUAL;
+ 
+ 
+Which of the following correctly shows the correct use of the TRUNC command on a date *
+SELECT TRUNC(TO_DATE(12-Feb-99,DD-MON-YY, 'YEAR')) "Date " FROM DUAL;
+SELECT TRUNC(TO_DATE('12-Feb-99','DD-MON-YY'), 'YEAR') "Date " FROM DUAL;
+ 
+TRUNC = TO_DATE('12-Feb-99','DD-MON-YY'), 'YEAR', "Date " FROM DUAL;
+None
+ 
+What kind of commands can you enter at the command prompt (Choose all that apply)? A. PL/SQL blocks B. SQL*Plus commands C. security commands D. SQL commands *
+A, B, D
+A, C
+C, D
+D, B
+ 
+ 
+Which of the following queries can you use to search for employees with the pattern 'A_B' in their names? *
+SELECT last_name FROM employees WHERE last_name LIKE '%A\_B%' ESCAPE '\';
+SELECT last_name FROM employees WHERE last_name LIKE '%A_B%' ESCAPE ;
+ 
+SELECT last_name FROM employees WHERE last_name LIKE 'A_B%' ESCAPE '%';
+SELECT last_name FROM employees WHERE last_name LIKE '%A\_B%' ESCAPE '';
+ 
+Which two statements complete a transaction? *
+ROLLBACK TO SAVEPOINT C;
+ALTER TABLE employeesSET UNUSED COLUMN sal;
+ 
+option A and option B
+DESCRIBE employees;
+ 
+SELECT manager_id, last_name, hire_date, salary, AVG(salary) OVER (PARTITION BY manager_id ORDER BY hire_date ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING) AS mavg FROM employees; *
+it calculates, for each employee in the employees table, the average salary of the employees reporting to his/her respective manager
+it calculates, for each employee in the employees table, the average salary of the employees reporting to his/her respective manager who were hired just before the employee
+it calculates, for each employee in the employees table, the average salary of the employees reporting to the same manager who were hired in the range just before through just after the employee E.
+it calculates, for each employee in the employees table, the average salary of the employees reporting to his/her respective manager who were hired just after the employee
+ 
+ 
+Which of the following has been achieved by the following SQL codes? SELECT * FROM employees WHERE hire_date < TO_DATE ('01-JAN-1999', 'DD-MON-YYYY') AND salary > 3500; *
+only those hired before 1999 and earning less than $3500 a month are returned
+compile time error
+only those hired before 1999 and earning more than $3500 a month are returned
+ 
+only those hired after 1999 and earning more than $3500 a month are returned
+ 
+Evaluate this SQL statement: SELECT e.employee_id, (.15* e.salary) + (.5 * e.commission_pct) + (s.sales_amount * (.35 * e.bonus)) AS CALC_VALUEFROM employees e, sales sWHERE e.employee_id = s.emp_id; What will happen if you remove all the parentheses from the calculation? *
+The value displayed in the CALC_VALUE column will be lower.
+There will be no difference in the value displayed in the CALC_VALUE column.
+ 
+The value displayed in the CALC_VALUE column will be higher.
+An error will be reported.
+ 
+Examine the description of the EMPLOYEES table: EMP_ID NUMBER(4) NOT NULL LAST_NAME VARCHAR2(30) NOT NULL FIRST_NAME VARCHAR2(30) DEPT_ID NUMBER(2) JOB_CAT VARCHAR(30) SALARY NUMBER(8,2) Which statement shows the department ID, minimum salary, and maximum salary paid in that department, only if the minimum salary is less than 5000 and maximum salary is more than 15000? *
+SELECT dept_id, MIN (salary), MAX (salary) FROM employees WHERE MIN(salary) < 5000 AND MAX (salary) > 15000;
+SELECT dept_id, MIN (salary), MAX (salary) FROM employees WHERE MIN (salary) < 5000 AND MAX (salary) 15000 GROUP BY dept_id;
+SELECT dept_id, MIN(salary), MAX(salary) FROM employees HAVING MIN (salary) < 5000 AND MAX (salary)
+ 
+SELECT dept_id MIN (salary), MAX (salary) FROM employees GROUP BY dept_id HAVING MIN(salary) < 5000 AND MAX (salary) > 15000
+ 
+You would like to display the system date in the format "Monday, 01 June, 2001". Which SELECT statement should you use? *
+SELECT TO_CHAR (SYSDATE, 'FMDD, DY Month, YYYY') FROM dual;
+ 
+SELECT TO_CHAR (SYSDATE, 'FMDay, DD Month, YYYY') FROM dual;
+SELECT TO_CHAR (SYSDATE, 'FMDY, DDD Month, YYYY') FROM dual;
+SELECT TO_DATE (SYSDATE, 'FMDY, DDD Month, YYYY') FROM dual;
+ 
+Examine the structure of the EMPLOYEES and NEW_EMPLOYEES tables: EMPLOYEES EMPLOYEE_ID NUMBER Primary Key FIRST_NAME VARCHAR2(25) LAST_NAME VARCHAR2(25) HIRE_DATE DATE NEW_EMPLOYEES EMPLOYEE_ID NUMBER Primary Key NAME VARCHAR2(60) Which MERGE statement is valid? *
+MERGE INTO new_employees c USING employees e ON (c.employee_id = e.employee_id) WHEN MATCHED THEN UPDATE SET c.name = e.first_name ||','|| e.last_name WHEN NOT MATCHED THEN INSERT VALUES (e.employee_id, e.first_name ||', '||e.last_name);
+ 
+MERGE new_employees c USING employees e ON (c.employee_id = e.employee_id) WHEN EXISTS THEN UPDATE SET c.name = e.first_name ||','|| e.last_name WHEN NOT MATCHED THEN INSERT VALUES (e.employee_id, e.first_name ||', '||e.last_name);
+MERGE INTO new_employees c USING employees e ON (c.employee_id = e.employee_id) WHEN EXISTS THEN UPDATE SET c.name = e.first_name ||','|| e.last_name WHEN NOT MATCHED THEN INSERT VALUES(e.employee_id, e.first_name ||', '||e.last_name);
+MERGE new_employees c FROM employees e ON (c.employee_id = e.employee_id) WHEN MATCHED THEN UPDATE SET c.name = e.first_name ||','|| e.last_name WHEN NOT MATCHED THEN INSERT INTO new_employees VALUES (e.employee_id, e.first_name ||', '||e.! last_name);
+ 
+You are the DBA for an academic database. You need to create a role that allows a group of users to modify existing rows in the STUDENT_GRADES table. Which set of statements accomplishes this? *
+CREATE ROLE registrar; GRANT MODIFY ON student_grades TO registrar; GRANT registrar to user1, user2, user3
+ 
+CREATE NEW ROLE registrar; GRANT ALL ON student_grades TO registrar; GRANT registrar to user1, user2, user3
+CREATE ROLE registrar; GRANT UPDATE ON student_grades TO registrar; GRANT ROLE registrar to user1, user2, user3
+CREATE ROLE registrar; GRANT UPDATE ON student_grades TO registrar; GRANT registrar to user1, user2, user3;
+ 
+.Examine the description of the EMPLOYEES table: EMP_ID NUMBER(4) NOT NULL LAST_NAME VARCHAR2(30) NOT NULL FIRST_NAME VARCHAR2(30) DEPT_ID NUMBER(2) Which statement produces the number of different departments that have employees with last name Smith? *
+SELECT COUNT(*) FROM employees WHERE last_name='Smith';
+SELECT COUNT (dept_id) FROM employees WHERE last_name='Smith';
+SELECT DISTINCT(COUNT(dept_id)) FROM employees WHERE last_name='Smith';
+ 
+SELECT COUNT(DISTINCT dept_id) FROM employees WHERE last_name='Smith';
+ 
+Which three are true regarding the use of outer joins? *
+You use an outer join to see only the rows that do not meet the join condition.
+In the WHERE condition, you use (+) following the name of the column in the table without matching rows, to perform an outer join.
+You cannot link a condition that is involved in an outer join to another condition by using the OR operator.
+All of he above
+ 
+Roll_No *
+1093
+ 
+Before making a tablespace read only, which of the following conditions must be met (Choose all that apply)? *
+The tablespace must be online.
+The tablespace must not contain any active rollback segments.
+The tablespace must not be involved in an open backup.
+All of the Above
+ 
+This content is neither created nor endorsed by Google. - Terms of Service - Privacy Policy
+Google Forms
+
+
+
+
+1.Choose the correct pattern Matching sign for matching a single character.
+1 point
+_
+?
+*
+%
+2.Rollback and Commit affect
+1 point
+Only DML statements
+Only DDL statements
+Both (1) and (2)
+All statements executed in SQL*PLUS
+3.The name of the only column in the DUAL table is
+1 point
+X
+C
+DUMMY
+None of these
+4.EDIT or ED command places the contents of the query buffer in a file named _____ by default
+1 point
+AFEIDT.BUF
+ATFIED.BUF
+AFIEDT.BUF
+AETIED.BUF
+5.INITCAP(cdac) returns
+1 point
+cDAC
+CDAC
+cdac
+Cdac
+6.Oracle reserved words can be used for naming a table.
+1 point
+True
+False
+7.The DUAL table has
+1 point
+One row many columns
+One column and many Rows
+One row and One Column
+Many Rows and many columns
+8.In order to select data that is within a range of values, the "BETWEEN" operator is used.
+1 point
+True
+False
+9.____________ makes a string of certain length by adding a certain set of characters to the left
+1 point
+LTRIM
+LPAD
+SUBSTR
+INSTR
+10.SQL command can be terminated by _____________.
+1 point
+semicolon
+slash
+blank line
+All of the above
+11.DESCRIBE is an __________ command.
+1 point
+SQL
+SQL*Plus
+PL*SQL
+Forms 6i
+12.In Oracle, the upper limit for nested functions is upto __________ levels.
+1 point
+0 (zero)
+32
+64
+255
+13.Wildcards used for pattern matching are __________.
+1 point
+* and ?
+$ and #
+@ and !
+% and _
+14.__________ functions can be used to make your queries case-insensitive.
+1 point
+Upper and lower
+Lpad and rpad
+Ltrim and rtrim
+Replace and translate
+15.Which of the following is not a group function?
+1 point
+avg( )
+Sqrt( )
+sum()
+max()
+16.The value of INSTR(‘CALIFORNIA’,’A’,1,2) is __________ .
+1 point
+2
+1
+10
+9
+17.The SQL query to retrieve current time in Oracle is __________
+1 point
+Select SysTime from dual;
+Select SysDate from dual;
+Select TO_CHAR (SysDate,’HH:MI:SS’) from dual;
+Select TO_CHAR (SysDate,’HH:MM:SS’) from dual;
+18.To lock the rows of a table manually, you can use a Select statement with the __________ clause.
+1 point
+For Update
+For Delete
+For Insert
+For Lock
+19.__________ function can be used to make character column data as right-justified.
+1 point
+Lpad
+Rpad
+Ljustify
+Rjustify
+20.Nesting of __________ functions is allowed.
+1 point
+Date
+List
+Aggregate
+All of the above
+
+
+
+DBT mock3
+Total points
+14/20
+ 
+Email address *
+1000sonali@gmail.com
+Name *
+Sonali Nikam
+Roll No. *
+1093
+ 
+Which of the following statements is true about implicit cursors?
+1/1
+Implicit cursors are used for SQL statements that are not named.
+ 
+Developers should use implicit cursors with great care.
+Implicit cursors are used in cursor for loops to handle data processing
+Implicit cursors are no longer a feature in Oracle.
+ 
+Which of the following is not a feature of a cursor FOR loop?
+1/1
+Record type declaration
+Opening and parsing of SQL statements
+ 
+Fetches records from cursor
+Requires exit condition to be defined
+ 
+Which three of the following are implicit cursor attributes?
+1/1
+%notfoundD
+ 
+%too_many_rows
+%rowtype
+%rowcountE
+ 
+If left out, which of the following would cause an infinite loop to occur in a simple loop?
+1/1
+LOOP
+END LOOP
+ 
+THEN
+EXIT
+ 
+For which task is it best to use a character string enclosed by double quotes? Please select the best answer.
+0/1
+Referring to a column in the database
+Using a reserved word to declare an identifier
+Using a hyphen to concatenate two columns
+Referring to a number variable by using a logical operator
+ 
+Correct answer
+Using a reserved word to declare an identifier
+ 
+What is the maximum number of exception handlers processed before the PL/SQL block is exited, provided an exception occurs? Please select the best answer.
+0/1
+None
+ 
+All exceptions that are referenced in the block
+One
+All exceptions that apply
+Correct answer
+One
+ 
+Which functions can be used with any datatype? Please select all the correct answers.
+0/1
+SUM
+ 
+MIN
+MAX
+AVG
+Correct answer
+MIN
+MAX
+ 
+Select incorrect variable declarations
+0/1
+foo_text varchar2(10) := 'hello world';
+foo_time date;
+foo_char char(1) := 'Y
+ 
+foo_text number(10);
+Correct answer
+foo_text varchar2(10) := 'hello world';
+ 
+Select invalid variable types
+1/1
+CHAR
+VARCHAR1
+ 
+VARCHAR2
+INTEGER
+ 
+Where do you declare an explicit cursor in the PL/SQL language?
+1/1
+In the PL/SQL working storage section
+In the PL/SQL declaration section
+ 
+In the PL/SQL body section
+In the PL/SQL exception section
+ 
+The || is is an example of what function SELECT last_name || ', ' || first_name || ' ' || middle_nameFROM employees;
+1/1
+Incantination
+Integration
+Continuation
+Concatenation
+ 
+ 
+Which of the following is not an Oracle DML function?
+1/1
+DECODE
+TRUNCATE
+ 
+NVL
+TO_CHAR
+ 
+PL/SQL subprograms, unlike anonymous blocks, are compiled each time they are executed. True or False?
+1/1
+True
+ 
+False
+ 
+Which of the following can be used as an argument for a procedure parameter?
+1/1
+The name of a variable
+A literal value
+An expression
+All of the above.
+ 
+ 
+If you don't specify a mode for a parameter, what is the default mode?
+1/1
+OUT
+COPY
+IN
+ 
+DEFAULT
+ 
+What are the three parameter modes for procedures?
+1/1
+R(ead), W(rite), A(ppend)
+CONSTANT, VARIABLE, DEFAULT
+COPY, NOCOPY, REF
+IN, OUT, IN OUT
+ 
+ 
+The sequence of the columns in a GROUP BY clause has no effect in the ordering of the output.
+1/1
+True
+False
+ 
+ 
+All aggregate functions ignore NULLs except for ............
+1/1
+Distinct
+Count (*)
+ 
+Average()
+None of above
+ 
+Using GROUP BY ............ has the effect of removing duplicates from the data.
+0/1
+with aggregates
+ 
+with order by
+without order by
+without aggregates
+Correct answer
+without aggregates
+ 
+For the purposes of ............, null values are considered equal to other nulls and are grouped together into a single result row.
+0/1
+Group By
+Having
+Both of above
+ 
+None of above
+Correct answer
+Group By
+This content is neither created nor endorsed by Google. - Terms of Service - Privacy Policy
+Google Forms
+
+
+
+DBT_Mock4
+Total points
+14/20
+ 
+Email address *
+1000sonali@gmail.com
+Enter your name *
+Sonali Nikam
+Enter Roll No. *
+1093
+ 
+If you SELECT attributes and use an aggregate function, you must GROUP BY the non-aggregate attributes.
+1/1
+True
+ 
+False
+ 
+Which data manipulation command is used to combines the records from one or more tables?
+1/1
+SELECT
+JOIN
+ 
+PRODUCT
+PROJECT
+ 
+Which of the following is not a valid SQL type?
+0/1
+FLOAT
+ 
+NUMERIC
+DECIMAL
+CHARACTER
+Correct answer
+DECIMAL
+ 
+SQL permits attribute names to be repeated in the same relation. (True or False)
+1/1
+True
+False
+ 
+ 
+Which operator is used to compare a value to a specified list of values?
+1/1
+BETWEEN
+ANY
+IN
+ 
+ALL
+ 
+A SQL query automatically eliminates duplicates (True / False) ?
+1/1
+TRUE
+FALSE
+ 
+ 
+The SQL used by front-end application programs to request data from the DBMS is called _______
+1/1
+DML
+ 
+DDL
+VDL
+SDL
+ 
+The command used to delete a particular column in a relation is ____________
+0/2
+UPDATE TABLE
+TRUNCATE COLUMN
+ALTER , DROP
+DELETE COLUMN
+ 
+Correct answer
+ALTER , DROP
+ 
+Which of the following operations requires the relations to be union compatible?
+0/1
+UNION
+ 
+INTERSECTION
+DIFFERENCE
+ALL OF THESE
+Correct answer
+ALL OF THESE
+ 
+The database language that allows us to access data in a database is called :
+0/1
+DCL
+DML
+ 
+DDL
+None Of Above
+Correct answer
+DCL
+ 
+Which of the following is a comparison operator in SQL?
+1/1
+Double equal sign ( == )
+LIKE
+BETWEEN
+Single equal sign ( = )
+ 
+ 
+Which of the following is a legal expression in SQL?
+1/1
+SELECT NULL FROM SALES;
+SELECT NAME FROM SALES;
+ 
+SELECT * FROM SALES WHEN PRICE = NULL;
+SELECT # FROM SALES;
+ 
+DCL provides commands to performactionslike
+1/1
+Change the structure of Tables
+Insert, Update or Delete Records and Values
+Authorizing Access and other control over Database
+ 
+None of Above
+ 
+The COUNT function in SQL returns the number of ______________
+1/1
+Values
+ 
+Distinct values
+Group By
+Columns
+ 
+Which data type can store unstructured data in a column?
+1/1
+RAW
+ 
+CHAR
+NUMERIC
+VARCHAR
+ 
+A SQL query will not work if there are no indexes on the relations - Is it true ?
+0/1
+NO
+YES
+ 
+Correct answer
+NO
+ 
+Which function is used to divides one numeric expression by another and get the remainder ?
+1/1
+POWER
+MOD
+ 
+ROUND
+REMAINDER
+ 
+What is the full form of DDL ?
+1/1
+Dynamic Data Language
+Detailed Data Language
+Data Definition Language
+ 
+Data Derivation Language
+ 
+The virtual table that its created by data from the result of an SQL 'Select' statement is called _________
+1/1
+View
+ 
+Synonym
+Sequence
+Transaction
+This content is neither created nor endorsed by Google. - Terms of Service - Privacy Policy
+Google Forms

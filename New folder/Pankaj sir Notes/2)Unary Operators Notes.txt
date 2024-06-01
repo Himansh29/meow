@@ -1,0 +1,269 @@
+Unary operators we have
+
+1. ++
+2. --
+
+post increment : Increment the value of the variable by 1 when next time you see the same variable
+
+pre increment: Increment the value of the variable by 1 in same step
+
+
+Example 1:
+
+int i = 10;
+
+int j = i++  +  i++ ;
+        10++    11++
+
+SOP(i); 12
+
+SOP(j); 21
+
+
+Example 2:
+
+int i = 10;
+
+int j =  i++ ;
+         10++
+
+SOP(i);  11
+
+SOP(j); 10
+
+
+Example 3:
+
+int i = 10;
+         11	  12	
+int j = ++i   +   ++i ;
+	++10	 ++11
+
+SOP(i); 12
+
+SOP(j); 23
+
+
+Example 4:
+
+int i = 10;
+         11      12       13
+int j = ++i   +  ++i  +  ++i +  i;
+        ++10     ++11    ++12   13
+
+SOP(i);13
+
+SOP(j);49
+
+
+
+Example 5:
+
+int i = 10;
+          11
+int j = ++i   +  i++;
+       ++10      11++
+
+SOP(i); 12
+
+SOP(j); 21
+
+
+Example 6:
+
+int i = 10;
+                 12                   14
+int j = i++  +  ++i   +  i++    +   ++i;
+        10++    ++11     12++        ++13
+
+SOP(i); 14
+
+SOP(j); //
+
+
+Example 7:
+
+int i = 10;
+
+
+int j = i--  +  i --;
+        10--    9--
+
+SOP(i); 8
+
+
+SOP(j); 19
+
+
+
+Example 8:
+
+int i = 10;
+         9
+int j = --i  +  i-- ;
+	--10    9--
+
+SOP(i); 8
+
+SOP(j); 18
+
+
+
+Example 9:
+
+
+int i = 10;
+  
+                          9       10                     
+int j = i++   +  i--  +  --i   + ++i;
+	10++	 11--   --10     ++9
+
+SOP(i); 10
+
+
+SOP(j); 40
+
+
+
+Example 10:
+
+
+int i = 10;
+
+      
+                -12
+int j = i++ +  -++i  +  -i++;
+	10++    ++11     -12++  
+
+SOP(i); 13
+
+
+SOP(j); -14
+
+
+Example 11:
+
+
+
+int i = 10;
+
+
+int j = -++i   -  ---i    +  i++   - -++i;
+
+SOP(i);
+
+SOP(j);
+
+The above program will give us an error, because in unary operator concept you can never use --- / +++ together
+
+
+Example 12:
+
+ int i = 10;
+     
+int j = -++i   +  -i--   +  i++   - -++i;
+
+     
+ System.out.println(i);
+      
+      
+System.out.println(j);
+
+
+Output:
+12
+0
+
+
+Example 13:
+
+int i = 10;
+
+SOP(i++); 10++  //10
+
+SOP(i--);  11-- //11
+
+SOP(++i);  ++10 //11
+
+SOP(--i); --11 //10
+
+SOP(i); 10
+
+
+Assignment Question :
+
+Consider below code of Test.java file:
+public class Test {
+    public static void main(String[] args) {
+        int m = 20;
+        int var = --m * m++ + m-- - --m;
+        System.out.println("m = " + m);
+        System.out.println("var = " + var);
+    }
+}
+
+
+What will be the result of compiling and executing Test class?
+
+Options:
+1.m = 18 var = 363
+
+2.m = 25 var = 363
+
+3.m = 363 var = 363
+
+4.CTE
+
+
+Types of variables in java:
+
+1. static variable
+2. non static variable
+3. local variable
+4. reference variable
+
+
+1. Local variables in java
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

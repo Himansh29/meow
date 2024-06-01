@@ -1,0 +1,248 @@
+Today's Topics
+Revision
+Spring MVC n Hibernate integration
+Enter Spring Boot n port earlier application
+JPA
+
+
+
+Revise
+1.Spring MVC with hibernate implementation steps n concepts(flow)
+1.1 Refer : "day13_data\day13_help\diagrams\comparison of layers JSP-JB vs Spring MVC.png"
+
+1.2 Refer to steps n Spring MVC flow diagram
+(refer to the detailed explanation below)
+
+Which are the important blocks of Spring MVC ? 
+
+1. o.s.w.s.DispatcherServlet
+Entry point of the spring MVC. Front Controller pattern
+Centralized dispatcher
+Will be intercepting all reqs coming from all clnts.
+Managed by WC 
+web.xml . Life cycle started at the deployment time .
+init ---> job of the D.S --> hybrid --xml 
+Def Name of master config file to start SC : spring-servlet.xml
+Def loc : WEB-INF
+read by D.S (DispatcherServlet)
+API of SC : o.s.b.f.BeanFactory <---- o.s.c.ApplicationContext : for Java SE : in hybrid approach <---o.s.c.s.ClasspathXmlApplcationContext : instance , to start SC
+
+In web app : API of SC : o.s.b.f.BeanFactory <---- o.s.c.ApplicationContext <---- WebApplicationContext<----- XmlWebApplicationContext : it's instance created by D.S @ web app dep time.
+
+
+2. Request Handling Controller (Handler)
+: prog supplied
+Mandatory annotations :
+@Controller : cls level annotation
+@RequestMapping : method level annotation
+which all HTTP requests , it can intercept ? : GET , POST , PUT , DELETE .....
+@GetMapping : get 
+@PostMapping : post
+@PutMapping : put 
+@DeleteMapping : delete
+
+3. HandlerMapping Bean 
+auto populated by SC : by looking at req handling methods (@RequestMapping) present in req handling controller(@Controller)
+Map
+key : value of @ReqMapping(or it's sub type) annotation eg : /hello
+value : F.Q Handler class Name+ Method name
+
+4. View Resolver :
+Job : Translation from Logical view (forward view name) ---> Actual view name
+propeties : prefix , suffix + viewClass : JstlView (to enable JSTL tags/actions)
+AVN(actual view name) =  prefix + LVN + suffix
+eg : /WEB-INF/views+LVN+.jsp
+
+5. View Layer (JSP) : prog supplied
+
+
+5.1 Test Spring MVC Flow
+5.1.1 Serve index.jsp : from Spring MVC
+5.2 Test ModelAndView
+5.3 Test Model Map
+5.4 Display all categories loaded from DB
+
+
+
+6. What is a model attribute?
+It's the attribute(server side entry=k n value pair : String, Object)
+Purpose : to share the results of B.L from Handler ---> View layer
+Who creates  --- Req handling Controller(handler) --prog supplied
+Who sends it to whom : Handler ---> D.S
+After D.S gets actual view name from V.R : 
+D.S chks : are there any model attrs : 
+Yes : D.S saves model attrs under Request scope & then forwards the clnt to view layer .
+NO : D.S forwards the clnt to view layer .
+How to access these model attrs from JSP ?
+${requestScope.attrName}
+
+What are different ways for handler to add model attrs ?
+6.1 Via   o.s.w.s.ModelAndView?
+
+o.s.w.s.ModelAndView : class => holder for model attrs + logical view name
+Ctor : 
+ModelAndView(String viewName,String modelAttrName,Object modelAttrVal)
+eg : what can be valid ret type of req handling method
+String  OR ModelAndView : ModelAndView 
+
+
+6.2Any Simpler way to send model attributes from Handler --> D.S ?
+
+Use  o.s.ui.Model : i/f ---holder (Map) of model attributes
+How do u add model attributes ?
+public Model addAttribute(String modelAttrName,Object modelAttrVal)
+eg : How to add 2 model attrs? : method chaining
+
+	
+Who will supply empty Model map (as the dependency)?  : SC
+IoC : DI
+How to tell SC that handler method needs a model map ? : add it as the arg of req handling method
+When req handling controller rets string : logical view name (Handler implicitly rets all model attr  map to D.S)
+
+7. Handling request parameters in Controller ?
+Request Handling method argument levele annotation
+@RequestParm
+To bind request paramters to the method arguments
+
+eg : @RequestParam("price") double productPrice
+SC : double productPrice =Double.parseDouble(request.getParameter("price"))
+
+Reco : Match req param names with method arg names.
+
+eg : URL : http://localhost:8080/day13.1/test/product?nm=pen&qty=10&price=40.5&manuDate=2020-1-1
+
+Problem : HTTP 400 : 
+Bad request => some request data coming from client is invalid
+Default date format : MM/dd/yyyy
+To tell SC : use @DateTimeFormat annotation , along with @RequestParam
+
+
+
+
+7. Enter spring boot.
+
+(refer to  : https://docs.spring.io/spring-boot/docs/current/api/ , for spring boot latest API docs)
+
+7.1 Port existing web app to spring boot
+
+
+Objectives :
+Allow user to choose a category n display all products from the chosen category.
+
+
+
+
+
+8. PRG pattern(Post-redirect-get pattern)
+--- to avoid multiple submission issue in a web app.
+Replace forward view(server pull) by redirect view (clnt pull) --a.k.a double submit guard.
+
+How to replace default forward view by redirect view in spring MVC ?
+Ans -- use redirect keyword.
+eg : return "redirect:/customer/categories";
+Internals 
+D.S skips the V.R & sends temp redirect response to the clnt browser.
+How ?
+D.S invokes --- response.sendRedirect(response.encodeRedirectURL("/customer/categories"));
+So clnt browser will send a next request ---with method=GET
+URL --
+http://host:port/day13_boot/customer/categories
+
+URL after choosing a category :
+http://localhost:8080/day13_boot/customer/products;jsessionid=8210C7A572E0BF63BBB8176C40602A86?catId=1
+
+
+
+7. How to remember user details till logout?
+Ans : add them as attributes  in session scope.
+How to access HttpSession in Spring?
+Using D.I
+How  -- Simply add HttpSession as method argument of request handling method.
+
+
+8. How to remember the details(attributes) till only the next request (typically required in PRG --redirect view)
+Ans -- Add the attributes under flash scope.
+(They will be visible till the next request from the same clnt)
+How to add ?
+Use i/f -- o.s.w.s.mvc.support.RedirectAttributes
+Method
+public RedirectAttributes addFlashAttribute(String attrName,Object value)
+
+How to access them in view layer in the next request?
+via request scope attributes.
+
+
+eg : In case of successful login --save user details under session scope(till user log out) & retain status mesg only till the next request.
+In case of invalid login --save status under request scope.
+
+
+9. How to ensure all links(href)/form actions relative to current web app + add URL rewriting support ?
+1. Import spring supplied JSP tag lib.
+(via taglib directive)
+prefix ="spring"
+
+2.  Use the tag.
+<a href="<spring:url value='/user/logout'/>">Log Out</a>
+ / --- root of curnt web app.
+
+
+What will be the URL if cookies are enabled ?
+http://host:port/spring_mvc/user/logout
+
+What will be the URL if cookies are disabled ?
+http://host:port/spring_mvc/user/logout;jsessionid=egD5462754
+
+OR form action example
+<spring:url var="url" value='/admin/list'/>
+eg : <form action="${var}"> 
+form inputs
+</form>
+
+10. How to auto navigate the clnt to home page after logging out after some dly ?
+Ans : By setting refresh header of HTTP response.
+
+API of HttpServletResponse
+public void setHeader(String name,String value)
+
+name --- refresh
+value --- 10;url=any url you want to redirect to (eg : home page url (root of web app))
+10 : delay in seconds
+
+How to get the root of curnt web app ?
+API of HttpServletRequest
+String getContextPath()
+
+
+
+
+Test Data 
+
+Add this data in DB 
+id            | bigint      | NO   | PRI | NULL    | auto_increment |
+| card_no       | varchar(20) | YES  | UNI | NULL    |                |
+| creation_date | date        | YES  |     | NULL    |                |
+| location      | varchar(30) | YES  |     | NULL    |                |
+| email         | varchar(25) | YES  | UNI | NULL    |                |
+| first_name    | varchar(20) | YES  |     | NULL    |                |
+| last_name     | varchar(20) | YES  |     | NULL    |                |
+| password      | varchar(20) | NO   |     | NULL    |                |
+| user_role  
+
+insert into users_tbl values(default,'abc1234567','2019-1-1','Pune','rama@gmail.com','Rama','Kadam','12345','ADMIN');
+insert into users_tbl values(default,'riya@gmail.com','Riya','Patel','1345','CUSTOMER','abc1234568','2018-1-1','Nagpur');
+insert into users_tbl values(default,'mihir@gmail.com','Mihir','Rao','2345','CUSTOMER','abc1534567','2020-1-1','Delhi');
+
+insert into categories values(default,'Food Items','Tasty Food Items!!!!');
+insert into categories values(default,'Clothes','Smart Clothes!!!!');
+
+insert into products values(default,'Different Types of Flour',1,75,'Wheat Flour',1);
+insert into products values(default,'Different Types of Flour',1,70,'Jowar Flour',1);
+insert into products values(default,'Different Types of Flour',65,1,'Rice Flour',1);
+insert into products values(default,'Different Types of Flour',80,1,'Besan',1);
+
+insert into products values(default,'Stylish T Shirts',1,500,'T Shirt',2);
+insert into products values(default,'Comfortable Jeans',1,1500,'Comfort Jeans',2);
+insert into products values(default,'Smart Kurta',1,900,'Kurta',2);
+insert into products values(default,'Fitting Trousers',1,1800,'Trouser',2);
+
+

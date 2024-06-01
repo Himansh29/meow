@@ -1,0 +1,51 @@
+Create an application called EBank. This application have an Account[accountNumber, name, email, phone, balance] class.
+This application should also contain a Tester class which displays the following menu.
+
+1. Add Account
+2. Display an Account
+3. Display All Accounts
+4. Remove an Account
+5. Withdraw
+6. deposit
+7. transfer
+8. search account using name
+9. search account using email
+10. search account using phone
+11. sort account by name
+12. exit
+
+Use Collection to save Account objects. Use Exceptions like InvalidAccountException, AccountNotFoundException and InsufficientBalanceException and implement your own Interface called Operations which contains addAccount, displayAccount.....and so on
+
+
+Create AccountUtils class to implement this functionality and create Tester class for calling Main method
+
+Validations to do on account
+1. Name should be more than 5 characters
+2. balance should be more than 100
+3. email should contain . and @
+4. phone should be of 10 digits(phone property is String)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Take populated products(list) from sample data.
+Accept product category from user. 
+Filter out the products from the specified category 
+Sort them as per their date
+Save sorted product details in a text file using buffer.
+
+Design 
+1. core classes : Product ...
+2. custom exception
+3. validatio rules
+4. CollectionUtils 
+4.1 populate data : all products list
+4.2 Add a static method to return filtered n sorted products to the caller.
+i/p : productList ,category
+o/p :List(collection)
+
+5. IOUtils
+Add a static method to save product details to the text file : buffered manner
+i/p : List
+o/p : void
+
+6. Tester
